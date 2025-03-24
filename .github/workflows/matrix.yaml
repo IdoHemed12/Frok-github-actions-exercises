@@ -1,19 +1,19 @@
 name: Matrix strategy
-on :
-    push:
-        branches:
-            - feature/matrix
+on:
+  push:
+    branches:
+      - feature/matrix
 jobs:
-    do-things:
-        name: do things on ${{matrix.os}}
-        runs-on: ${{matrix.os}}
-        strategy:
-            matrix:
-                os: [ubuntu-latest, windows-latest, macOS-latest]
-                node-version: [10.x, 12.x, 14.x, 15.x]
-        steps:
-          - name: Use Node.js ${{ matrix.node-version }}
-            uses: actions/setup-node@v3
-            with:
-              node-version: ${{ matrix.node-version }}
-    
+  do-things:
+    name: do things on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node-version: [10.x, 12.x, 14.x, 15.x]
+    steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+        if: matrix.os += 'macOS-latest' || matrix.node-version != '14.x'
