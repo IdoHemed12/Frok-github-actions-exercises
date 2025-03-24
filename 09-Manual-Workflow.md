@@ -39,6 +39,11 @@ on:
         required: true
         default: input
         type: string
+      workflow: call-workflows
+        description: Type the name of the work flow that you want to call
+        required: true
+        default: default
+        tpye: string
 jobs:
   do-things:
     name: Do Things Manually
