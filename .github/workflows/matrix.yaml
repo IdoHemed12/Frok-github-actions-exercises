@@ -1,0 +1,15 @@
+name: Matrix strategy
+on :
+    push:
+        branches:
+            - feature/matrix
+jobs:
+    do-things:
+        name: do things on ${{matrix.os}}
+        runs-on: ${{matrix.os}}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest, macOS-latest]
+        steps:
+            - name: Executed a job on ${{matrix.os}}
+              run: echo "Hello ${{matrix.os}}"
