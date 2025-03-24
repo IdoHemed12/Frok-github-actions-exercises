@@ -1,20 +1,37 @@
-name: Manual workflow for testing
+name: Manual & Shared Workflow
 on:
-    workflow_dispatch:
-        inputs:
-            choice-example:
-                description: 'Choose an example to run'
-                required: true
-                default: warning
-                type: choice
-                options:
-                    - warning
-                    - error
-                    - success
+  workflow_dispatch:
+    inputs:
+      choice-example:
+        description: Choice Example
+        required: true
+        default: warning
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      string-example:
+        description: String Example
+        required: true
+        default: input
+        type: string
+  workflow_call:
+    inputs:
+      choice-example:
+        description: Choice Example
+        required: true
+        default: warning
+        type: string
+      string-example:
+        description: String Example
+        required: true
+        default: input
+        type: string
 jobs:
-    do-things:
-        name: Do things
-        runs-on: ubuntu-latest
-        steps:
-            - name: Do a thing
-              run: "echo I have done the thing with the following user input: ${{inputs.string-example}} and with ${{inputs.choice-example}}"
+  do-things:
+    name: Do Things Manually
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do A Thing
+        run: echo "I've done a thing manually with '${{ inputs.choice-example }}' and '${{ inputs.string-example }}'!"
