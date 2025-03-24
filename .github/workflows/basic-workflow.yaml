@@ -3,7 +3,6 @@
 #     push:
 #         branches:
 #         - master
-# #test
 # jobs:
 #     do-things:
 #         name: Do Things
