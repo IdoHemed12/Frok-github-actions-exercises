@@ -11,6 +11,9 @@ jobs:
         env:
           CONTEXT_ITEM: ${{ toJson(job) }}
         run: echo $CONTEXT_ITEM
+      - name: sleep-job
+        run: sleep 20
+        shell: bash
 
   second-job:
     runs-on: ubuntu-latest
@@ -20,3 +23,6 @@ jobs:
         env:
           CONTEXT_ITEM: ${{ toJson(job) }}
         run: echo $CONTEXT_ITEM
+      - name: sleep-job
+        run: sleep 20
+        shell: bash
