@@ -1,0 +1,27 @@
+name: using-defaults
+on:
+  push:
+    branches:
+      - feature/defaults
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create a src directory
+        run: mkdir src
+        shell: bash
+      - name: use python
+        run: |
+          import os
+          print("This is a python shell script using os module " + os.getcwd())
+        shell: python
+        working-directory: src
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a dst directory
+        run: mkdir dst
+        shell: bash
+      - name: use bash
+        run: echo "This is the dst directory $(pwd)"
+        working-directory: dst
