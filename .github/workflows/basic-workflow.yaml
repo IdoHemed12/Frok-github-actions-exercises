@@ -10,14 +10,7 @@ jobs:
         steps:
         - name: Checkout
           run: echo "This file will be stored as an artifact, in the Future :)"
-# name: Basic Workflow
-# on:
-#   push:
-#     branches: main
-# jobs:
-#   do-things:
-#     name: Do Things
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: The Thing I've Done
-#         run: echo "I've done a thing!"
+        - name: Sending an error code 
+          run: |
+           echo "Failed to Publish Artificat "
+           exit 1
