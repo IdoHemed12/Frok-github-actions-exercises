@@ -10,6 +10,10 @@ jobs:
         strategy:
             matrix:
                 os: [ubuntu-latest, windows-latest, macOS-latest]
+                node-version: [10.x, 12.x, 14.x, 15.x]
         steps:
-            - name: Executed a job on ${{matrix.os}}
-              run: echo "Hello ${{matrix.os}}"
+          - name: Use Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-version }}
+    
