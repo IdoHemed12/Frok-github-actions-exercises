@@ -1,0 +1,25 @@
+name: Manual workflow for testing
+on:
+    workflow_dispatch:
+        inputs:
+            choice-example:
+                description: 'Choose an example to run'
+                required: true
+                default: warning
+                type: choice
+                options:
+                    - warning
+                    - error
+                    - success
+            string-example:
+                description: 'Enter a string to print'
+                required: true
+                default: 'Hello, world!'
+                type: string
+jobs:
+    do-things:
+        name: Do things
+        runs-on: ubuntu-latest
+        steps:
+            - name: Do a thing
+              run: "I have done the thing with the following user input: ${{inputs.string-example}} and with ${{inputs.choice-example}}"
