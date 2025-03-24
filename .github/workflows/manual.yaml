@@ -11,11 +11,6 @@ on:
                     - warning
                     - error
                     - success
-            string-example:
-                description: 'Enter a string to print'
-                required: true
-                default: 'Hello, world!'
-                type: string
 jobs:
     do-things:
         name: Do things
