@@ -2,7 +2,7 @@ name: Basic Workflow
 on:
     push:
         branches:
-        - master
+        - main
 jobs:
     do-things:
         name: Do Things
