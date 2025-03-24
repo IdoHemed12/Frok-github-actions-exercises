@@ -22,4 +22,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Do a thing
-              run: "I have done the thing with the following user input: ${{inputs.string-example}} and with ${{inputs.choice-example}}"
+              run: "echo I have done the thing with the following user input: ${{inputs.string-example}} and with ${{inputs.choice-example}}"
