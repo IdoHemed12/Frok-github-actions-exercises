@@ -1,0 +1,20 @@
+name: Dependent Jobs
+on:
+  push:
+    branches: feature/dependent
+jobs:
+    first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: dump job information
+            env:
+                CONTEXT_ITEM: ${{$toJson(job)}}
+            run: echo $CONTEXT_ITEM
+        second-job:
+            name: second-job
+            runs-on: ubuntu-latest
+            steps:
+                -name: dump job information
+                env:
+                    CONTEXT_ITEM: ${{$toJson(job)}}
+                run: echo $CONTEXT_ITEM
