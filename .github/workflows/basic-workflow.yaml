@@ -1,13 +1,24 @@
+# name: Basic Workflow
+# on:
+#     push:
+#         branches:
+#         - master
+# #test
+# jobs:
+#     do-things:
+#         name: Do Things
+#         runs-on: ubuntu-latest
+#         steps:
+#         - name: Checkout
+#           uses: echo "This file will be stored as an artifact, in the Future :)"
 name: Basic Workflow
 on:
-    push:
-        branches:
-        - master
-#test
+  push:
+    branches: feature/basic-workflow
 jobs:
-    do-things:
-        name: Do Things
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout
-          uses: echo "This file will be stored as an artifact, in the Future :)"
+  do-things:
+    name: Do Things
+    runs-on: ubuntu-latest
+    steps:
+      - name: The Thing I've Done
+        run: echo "I've done a thing!"
