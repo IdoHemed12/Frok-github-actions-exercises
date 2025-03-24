@@ -1,4 +1,4 @@
-name: concurrent workflows
+name: concurrent workflows 2
 on:
     push:
         branches:
