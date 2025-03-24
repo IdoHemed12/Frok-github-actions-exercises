@@ -20,9 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create a dst directory
-        run: mkdir dst1
+        run: mkdir dst
         shell: bash
-        working-directory: dst1  
       - name: use bash
         run: echo "This is the dst directory $(pwd)"
         working-directory: dst
