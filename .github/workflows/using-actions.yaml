@@ -1,0 +1,17 @@
+name: using actions
+on:
+    push:
+        branches:
+            - feature/using-actions
+jobs:
+    List-Directory:
+        runs-on: ubuntu-latest
+        steps:
+            - name: List Directory
+              run: ls -latr
+            - name: checkout repository
+              uses: actions/checkout@v4
+            - name: list the directory after the Git repo checkout
+              run: ls -latr
+              
+
