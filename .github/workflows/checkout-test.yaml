@@ -12,12 +12,12 @@ on:
           - ubuntu-latest
 
 jobs:
-  centralized-job:
+  call-reusable-workflow:
     runs-on: ${{ inputs.runner }}
     steps:
       - name: Call reusable workflow
-        uses: ./.github/workflows/checkout-job.yaml
+        uses: idohemed12/reusable-workflows/.github/workflows/checkout-job.yaml@main
         with:
-          git-repo: ${{ github.repository }}
-          git-branch: ${{ github.ref_name }}
-          git-runner: ${{ inputs.runner }}
+          git_repo: https://github.com/${{ github.repository }}.git
+          git_branch: ${{ github.ref_name }}
+          git_runner: ${{ inputs.runner }}
