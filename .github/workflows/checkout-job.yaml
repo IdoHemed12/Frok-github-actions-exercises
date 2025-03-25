@@ -1,42 +1,35 @@
-#This will checout the repo that the action runs with
 name: checkout workflow repo
-    on:
-        workflow-call:
-            inputs:
-                git-repo:
-                    description: repo to checkout
-                    required: true
-                    type: string
-                git-branch:
-                    description: branch to use
-                    default: main
-                    required: true
-                    type: string
-                git-runner:
-                    descripton: Runner
-                    required: true
-                    type: string
-env:
-    GIT_REPO: ${{ github.repository }}
-    GIT_BRANCH: ${{ github.ref_name }}
-    GIT_RUNNER: ${{inputs.runner}}
+on:
+  workflow_call:
+    inputs:
+      git-repo:
+        description: Repo to checkout
+        required: true
+        type: string
+      git-branch:
+        description: Branch to use
+        default: main
+        required: true
+        type: string
+      git-runner:
+        description: Runner
+        required: true
+        type: string
 
-
-                
 jobs:
-    runs-on: ${{inputs.runner}}
-    checkout-git-repo-and-branch:
-        name:
-            coping-repo:
-                run: |
-                    echo "Cloning repository: $GIT_REPO"
-                    git clone --depth=1 --branch=$GIT_BRANCH $GIT_REPO repo
-                    cd repo
-                    echo "Repository checked out successfully."
-                shell: bash 
-                
-                
+  checkout-git-repo-and-branch:
+    runs-on: ${{ inputs.git-runner }}
+    steps:
+      - name: Clone repository
+        run: |
+          echo "Cloning repository: ${{ inputs.git-repo }}"
+          git clone --depth=1 --branch=${{ inputs.git-branch }} https://github.com/${{ inputs.git-repo }} repo
+          cd repo
+          echo "Repository checked out successfully."
+        shell: bash
 
 
 
-            
+
+
+

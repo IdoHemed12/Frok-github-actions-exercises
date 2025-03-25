@@ -1,22 +1,23 @@
 name: Call-checkout-test
-    on:
-    workflow_dispatch:
-        inputs:
-            runner:
-                description: Choice Example
-                required: true
-                default: warning
-                type: choice
-                options:
-                    - windows-latest
-                    - ubuntu-latest
-        
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: Choice Example
+        required: true
+        default: ubuntu-latest
+        type: choice
+        options:
+          - windows-latest
+          - ubuntu-latest
 
-job:
-    runs-on: ${{inputs.runner}}
-    centralized-job:
+jobs:
+  centralized-job:
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Call reusable workflow
         uses: ./.github/workflows/checkout-job.yaml
         with:
-            git-repo: ${{ github.repository }}
-            git-branch: ${{ github.ref_name }}
-            git-rummer: ${{inputs.runner}}
+          git-repo: ${{ github.repository }}
+          git-branch: ${{ github.ref_name }}
+          git-runner: ${{ inputs.runner }}
