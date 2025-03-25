@@ -1,0 +1,26 @@
+name: using actions
+on:
+    push:
+        branches:
+            - feature/using-actions  # This needs to be referenced in a variable
+
+jobs:
+    List-Directory:
+        runs-on: ubuntu-latest
+        env:
+            GIT_REPO: https://github.com/${{ github.repository }}.git  # Sets the repo URL
+            GIT_BRANCH: ${{ github.ref_name }}  # Gets the branch name dynamically
+        steps:
+            - name: List Directory Before Checkout
+              run: ls -latr
+              
+            - name: Checkout repository using a default script
+              shell: bash
+              run: |
+                echo "Cloning repository: $GIT_REPO"
+                git clone --depth=1 --branch=$GIT_BRANCH $GIT_REPO repo
+                cd repo
+                echo "Repository checked out successfully."
+
+            - name: List directory after checking out the repository
+              run: ls -latr repo
