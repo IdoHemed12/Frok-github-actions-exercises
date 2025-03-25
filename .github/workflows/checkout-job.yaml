@@ -12,7 +12,19 @@ name: checkout workflow repo
                     default: main
                     required: true
                     type: string
+                git-runner:
+                    descripton: Runner
+                    required: true
+                    type: string
+env:
+    GIT_REPO: ${{ github.repository }}
+    GIT_BRANCH: ${{ github.ref_name }}
+    GIT_RUNNER: ${{inputs.runner}}
+
+
+                
 jobs:
+    runs-on: ${{inputs.runner}}
     checkout-git-repo-and-branch:
         name:
             coping-repo:
