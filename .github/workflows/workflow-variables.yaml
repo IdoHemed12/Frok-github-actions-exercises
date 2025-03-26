@@ -1,23 +1,22 @@
-name: print workflow variables
+name: Print Workflow Variables
+
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print message
+      - name: Print all environment variables to a JSON file
         run: |
-          # Output should be key-value pairs in JSON format
-          echo "Printing all workflow variables"
-          for key in $(printenv | cut -d= -f1); do
-            echo "\"$key\": \"$(printenv $key)\"" >> workflow.env.txt
-          done
+          # Create a JSON object from environment variables
+          jq -n env > workflow-env.json
         shell: bash
 
-      - name: Upload variables as an artifact
+      - name: Upload environment variables as an artifact
         uses: actions/upload-artifact@v4
         with:
           name: workflow-variables
-          path: workflow.env.txt
+          path: workflow-env.json
