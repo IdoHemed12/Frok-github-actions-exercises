@@ -1,4 +1,4 @@
-version: 2
+name: dependabot-Auto-Update
 on:
   schedule:
     - cron: "0 11 * * *"  # daily at 11 AM UTC
