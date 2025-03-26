@@ -1,4 +1,4 @@
-name: Call-checkout-test
+name: call_Repo_Checkout_Workflow
 on:
   workflow_dispatch:
     inputs:
@@ -16,9 +16,8 @@ jobs:
     runs-on: ${{ inputs.runner }}
     steps:
       - name: Call reusable workflow
-        # uses: idohemed12/reusable-workflows/.github/workflows/checkout-job.yaml@${{ github.ref_
-        use:
+        uses: ${{GITHUB_SERVER_URL}}/repos/${{ github.repository }}/actions/workflows/checkout-job.yaml@${{GITHUB_REF}}
         with:
           git_repo: https://github.com/${{ github.repository }}.git
-          git_branch: ${{ github.ref_name }}
+          git_branch: ${{ github.head_ref || github.ref_name }}
           git_runner: ${{ inputs.runner }}
