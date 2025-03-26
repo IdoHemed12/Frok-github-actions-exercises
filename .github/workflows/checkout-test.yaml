@@ -13,11 +13,9 @@ on:
 
 jobs:
   call-reusable-workflow:
+    uses: IdoHemed12/Frok-github-actions-exercises/.github/workflows/checkout-job.yaml@main
+    with:
+      git_repo: https://github.com/${{ github.repository }}.git
+      git_branch: ${{ github.head_ref || github.ref_name }}
+      git_runner: ${{ inputs.runner }}
     runs-on: ${{ inputs.runner }}
-    steps:
-      - name: Call reusable workflow
-        uses: IdoHemed12/Frok-github-actions-exercises/.github/workflows/checkout-job.yaml@main
-        with:
-          git_repo: https://github.com/${{ github.repository }}.git
-          git_branch: ${{ github.head_ref || github.ref_name }}
-          git_runner: ${{ inputs.runner }}
