@@ -32,6 +32,3 @@ jobs:
         with:
           name: golang_app
           path: golang_app/app
-      - name: List golang-app directory
-        run: ls -l golang_app
-  
