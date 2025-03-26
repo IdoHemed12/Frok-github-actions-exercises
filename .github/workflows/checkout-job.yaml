@@ -14,8 +14,8 @@ jobs:
       - name: Clone repository
         run: |
           echo "Cloning repository: "
-          echo https://github.com/${{ github.repository }}@${{ github.ref_name }}
-          git clone --depth=1 --branch=https://github.com/${{ github.repository }}@${{ github.ref_name }}
+          echo https://github.com/${{ github.repository }}
+          git clone --depth=1 --branch=https://github.com/${{ github.repository }}
           cd repo
           echo "Repository checked out successfully."
         shell: bash
