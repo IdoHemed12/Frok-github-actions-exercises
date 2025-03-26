@@ -1,4 +1,8 @@
 version: 2
+on:
+  manual-schedule:
+    - cron: "0 0 * * *"
+  workflow-dispatch:
 updates:
   # Update npm and Yarn dependencies
   - package-ecosystem: "npm"
