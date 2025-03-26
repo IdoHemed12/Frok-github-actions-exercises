@@ -2,6 +2,7 @@ version: 2
 on:
   schedule:
     - cron: "0 11 * * *"  # daily at 11 AM UTC
+  workflow_dispatch:  # allows manual triggering of the workflow
 
 jobs:
   updates:
@@ -16,4 +17,3 @@ jobs:
           commit-message:
             prefix: "chore(deps): update"
             commit-prefix: "chore(deps): update"
-            
