@@ -1,6 +1,7 @@
 name: Continuous Integration & Delivery
 on:
   pull_request:
+    - branches: [ main ]
   workflow_dispatch:
 defaults:
   run:
