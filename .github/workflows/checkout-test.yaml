@@ -21,6 +21,7 @@ jobs:
         shell: bash
 
   call-reusable-workflow:
+    needs: debug-validation
     uses: ./.github/workflows/checkout-job.yaml
     with:
       git-runner: ${{ inputs.runner }}
