@@ -3,16 +3,13 @@ on:
   workflow_dispatch:
     inputs:
       runner:
-        description: Choice Example
+        description: 'Choice Example'
         required: true
-        default: ubuntu-latest
+        default: 'ubuntu-latest'
         type: choice
         options:
-          - windows-latest
-          - ubuntu-latest
-env:
-  GITHUB_WORKFLOW_REF: ${{ github.repository }}
-  GITHUB_REF_NAME: ${{ github.ref_name }}
+          - 'windows-latest'
+          - 'ubuntu-latest'
 
 jobs:
   debug-validation:
@@ -20,10 +17,11 @@ jobs:
     runs-on: ${{ inputs.runner }}
     steps:
       - name: Print URL With ENV
-        run:  "${{ github.repository }}/.github/workflows/checkout-job.yaml@$${{ github.ref_name }}"
+        run: echo "${{ github.repository }}/.github/workflows/checkout-job.yaml@${{ github.ref_name }}"
         shell: bash
+
   call-reusable-workflow:
-    uses: ${{ github.repository }}/.github/workflows/checkout-job.yaml@$${{ github.ref_name }}
+    uses: ./.github/workflows/checkout-job.yaml
     with:
       git-repo: https://github.com/${{ github.repository }}.git
       git-branch: ${{ github.head_ref || github.ref_name }}
