@@ -1,13 +1,19 @@
 version: 2
 on:
   schedule:
-    - cron: "0 0 * * *"  # daily at midnight
+    - cron: "0 11 * * *"  # daily at 11 AM UTC
+
 jobs:
-    updates:
-    - package-ecosystem: github-actions
-        directory: "/"
-        schedule:
-        interval: daily
-        open-pull-requests-limit: 10
-        commit-message:
-        prefix: "chore(deps): update"
+  updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update dependencies
+        uses: dependabot[bot]/github-actions@v2
+        with:
+          package-ecosystem: "github-actions"
+          directory: "/"
+          open-pull-requests-limit: 10
+          commit-message:
+            prefix: "chore(deps): update"
+            commit-prefix: "chore(deps): update"
+            
