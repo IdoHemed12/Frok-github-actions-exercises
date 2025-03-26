@@ -1,4 +1,4 @@
-name: Checkout Git Repo and Branch
+name: CheckoutGitRepoandBranch
 on:
   workflow_call:
     inputs:
