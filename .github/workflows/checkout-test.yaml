@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ inputs.runner }}
     steps:
       - name: Call reusable workflow
-        uses: ${{GITHUB_SERVER_URL}}/repos/${{ github.repository }}/actions/workflows/checkout-job.yaml@${{GITHUB_REF}}
+        uses: ${{ GITHUB_SERVER_URL }}/repos/${{ github.repository }}/actions/workflows/checkout-job.yaml@${{GITHUB_REF}}
         with:
           git_repo: https://github.com/${{ github.repository }}.git
           git_branch: ${{ github.head_ref || github.ref_name }}
