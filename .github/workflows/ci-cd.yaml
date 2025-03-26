@@ -28,7 +28,7 @@ jobs:
       - name: Run Tests
         run: go test
       - name: Dubeg Logs
-        run: ls -la golang_app/app
+        run: ls -la golang_app
       - name: Store Artifact
         uses: actions/upload-artifact@v4  
         with:
