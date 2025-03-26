@@ -21,6 +21,6 @@ jobs:
         shell: bash
 
   call-reusable-workflow:
-    uses: ${{ github.repository }}/.github/workflows/checkout-job.yaml@${{ github.ref_name }}
+    uses: ./.github/workflows/checkout-job.yaml
     with:
       git-runner: ${{ inputs.runner }}
