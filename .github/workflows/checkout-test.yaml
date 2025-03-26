@@ -16,7 +16,8 @@ jobs:
     runs-on: ${{ inputs.runner }}
     steps:
       - name: Call reusable workflow
-        uses: idohemed12/reusable-workflows/.github/workflows/checkout-job.yaml@${{ github.ref_name }}
+        # uses: idohemed12/reusable-workflows/.github/workflows/checkout-job.yaml@${{ github.ref_
+        use:
         with:
           git_repo: https://github.com/${{ github.repository }}.git
           git_branch: ${{ github.ref_name }}

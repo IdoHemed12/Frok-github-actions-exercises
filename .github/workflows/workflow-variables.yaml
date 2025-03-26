@@ -1,0 +1,14 @@
+name: print work flow variables
+on:
+    push:
+        branches: main
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Print message
+            run: |
+                for key in $(printenv | cut -d= -f1); do
+                echo "$key=$(printenv $key)"
+                done
+            shell: bash
