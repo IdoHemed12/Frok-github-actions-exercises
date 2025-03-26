@@ -1,7 +1,18 @@
-version: 2
-updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      open-pull-requests-limit: 10
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Dependabot
+        uses: dependabot/fetch-metadata@v1
+        with:
+          package-ecosystem: "github-actions"
+          directory: "/"
+          schedule-interval: "daily"
+          open-pull-requests-limit: 10
+          target-branch: "main" 
