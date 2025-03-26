@@ -10,10 +10,13 @@ on:
         options:
           - windows-latest
           - ubuntu-latest
+env:
+  GITHUB_WORKFLOW_REF: ${{ github.repository }}
+  GITHUB_REF_NAME: ${{ github.ref_name }}
 
 jobs:
   call-reusable-workflow:
-    uses: IdoHemed12/Frok-github-actions-exercises/.github/workflows/checkout-job.yaml@main
+    uses: ${{ github.repository }}/.github/workflows/checkout-job.yaml@$${{ github.ref_name }}
     with:
       git-repo: https://github.com/${{ github.repository }}.git
       git-branch: ${{ github.head_ref || github.ref_name }}
