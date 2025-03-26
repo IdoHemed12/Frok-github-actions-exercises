@@ -25,6 +25,8 @@ jobs:
           working-directory: golang_app
       - name: Run Tests
         run: go test
+      - name: Dubeg Logs
+        run: ls -la golang_app/app
       - name: Store Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
