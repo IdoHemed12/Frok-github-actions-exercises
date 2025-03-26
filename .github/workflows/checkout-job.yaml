@@ -2,15 +2,6 @@ name: Checkout Git Repo and Branch
 on:
   workflow_call:
     inputs:
-      git-repo:
-        description: Repo to checkout
-        required: true
-        type: string
-      git-branch:
-        description: Branch to use
-        default: main
-        required: true
-        type: string
       git-runner:
         description: Runner
         required: true
@@ -22,8 +13,8 @@ jobs:
     steps:
       - name: Clone repository
         run: |
-          echo "Cloning repository: ${{ inputs.git-repo }}"
-          git clone --depth=1 --branch=${{ inputs.git-branch }}${{ inputs.git-repo }} repo
+          echo "Cloning repository: "
+          git clone --depth=1 --branch=${{ github.repository }}/.github/workflows/checkout-job.yaml@${{ github.ref_name }} repo
           cd repo
           echo "Repository checked out successfully."
         shell: bash
