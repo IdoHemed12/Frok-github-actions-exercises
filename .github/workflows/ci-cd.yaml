@@ -1,0 +1,29 @@
+name : CI CD Pipeline
+on:
+    pull_request: [main]
+    workflow-dispatch:
+
+defaults:
+    run:
+        shell: bash
+jobs:
+    ci:
+        name: CI
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: golang_app
+        steps:
+            - name: clone repo
+              uses: actions/checkout@v2
+            - name: Get Dependencies
+              run: go get app
+            - name: Build
+              run: go build
+            - name: Run linting
+              uses: golangci/golangci-lint-action@v3
+            - name: Run tests
+              run: go test -v 
+        
+
+
