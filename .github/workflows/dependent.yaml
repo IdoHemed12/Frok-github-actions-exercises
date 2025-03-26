@@ -2,9 +2,10 @@ name: Dependent Jobs
 on:
   push:
     branches:
-      - feature/dependent
+      - main
 jobs:
   first-job:
+    needs: second-job
     runs-on: ubuntu-latest
     steps:
       - name: dump job information
