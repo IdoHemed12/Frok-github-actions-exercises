@@ -15,6 +15,6 @@ jobs:
   call-reusable-workflow:
     uses: IdoHemed12/Frok-github-actions-exercises/.github/workflows/checkout-job.yaml@main
     with:
-      git_repo: https://github.com/${{ github.repository }}.git
-      git_branch: ${{ github.head_ref || github.ref_name }}
-      git_runner: ${{ inputs.runner }}
+      git-repo: https://github.com/${{ github.repository }}.git
+      git-branch: ${{ github.head_ref || github.ref_name }}
+      git-runner: ${{ inputs.runner }}
