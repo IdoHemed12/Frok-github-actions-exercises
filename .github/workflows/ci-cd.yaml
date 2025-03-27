@@ -25,12 +25,11 @@ jobs:
       - name: Cache
         uses: actions/cache@v4
         with:
-          uses: actions/cache@v3.0.10
-          with:
-            path: |
-              ${{ steps.go-paths.outputs.gomodcache }}
-              ${{ steps.go-paths.outputs.gocache }}
-            key: ${{ runner.os }}-gomodcache-${{ hashFiles('**/go.sum') }}      - name: get-dependencies
+          path: |
+            ${{ steps.go-paths.outputs.gomodcache }}
+            ${{ steps.go-paths.outputs.gocache }}
+          key: ${{ runner.os }}-gomodcache-${{ hashFiles('**/go.sum') }}        
+      - name: get-dependencies
         run: go mod download
       - name: build
         run: go build
